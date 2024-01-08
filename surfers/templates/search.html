@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block main %}
+<!-- display tours for the specific city -->
+<section>
+
+    <div class="card-deck px-5 py-5 bg-dark">
+        <!-- each tour is a bootstrap card -->
+        {% for s_product in products %}
+        <div class="card col-md-4">
+            <img class="card-img-top" src="{{url_for('static', filename='img/'+s_product.image)}}" alt="Card image">
+            <div class="card-body">
+                <h4 class="card-title">{{s_product.name}}</h4>
+            </div>
+            <div class="card-footer">
+                <form action="{{ url_for('main.order') }}">
+                    <input type="hidden" id="product_id" name="product_id" value="{{ s_product.id }}">
+                    <input class="btn btn-outline-info" type="submit" value="Add to Cart">
+                </form>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+
+</section>
+{% endblock %}
+

@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% block main %}
+
+ <section class="py-5 bg-dark">
+            <div class="TOPSURFBOARDS" >
+                <h1 class="boardstitle text-light"style="text-align: center; font-size: 100px;">{{categories.name}}</h1>
+            </div>
+
+            <div class="card-deck text-center">
+              {% for product in products%}
+                <div class="card">
+                    <img class="card-img-top" src="{{url_for('static', filename='img/'+product.image)}}" alt="Card image cap">
+                    <div class="card-body">
+                      <h4 class="card-title"style="text-align:center ;">{{product.name}}</h4>
+                      <p class="card-price" style="text-align:center ;">${{product.price}}</p>
+                   
+                      <div class="form-inline justify-content-center">
+                        <a href="{{url_for('main.detail', productid = product.id)}}" class="btn btn-dark align-items-center">View Details</a>
+                        <form action="{{ url_for('main.order') }}">
+                        <input type="hidden" id="product_id" name="product_id" value="{{ product.id }}">
+                        <input class="btn btn-dark align-items-center ml-2" type="submit" value="Add to Cart">
+                        </form>
+                      </div>
+                    </div>
+                  </div> 
+                  {% endfor %} 
+            </div> <!-- End card deck -->
+          
+        </section>
+        {% endblock %}

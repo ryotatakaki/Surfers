@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% import "bootstrap/wtf.html" as wtf %}
+
+{% block main %}
+    <section class="py-5 bg-dark">  
+        <div class="container">
+            <div class="row">
+                <div class = "col-12">
+                    <h1 class="checkout text-light">Checkout</h1>
+                    <p class="checkout description text-light">
+                       Please provide your details so that out team can contact you to finalise details and take payment. Thank you! 
+                    </p>
+                </div>
+            </div>
+            <div class="row">
+                <div class = "col-6 text-light">
+                    {{ wtf.quick_form(form, button_map={'submit':'info'}) }}
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}
